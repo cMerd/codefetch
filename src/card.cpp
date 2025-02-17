@@ -58,14 +58,16 @@ card::card(const user &profile) {
     maxRowSize = std::max(maxRowSize, rows.back().second);
   }
 
-  rows.emplace_back(
-      rankColor + L"" + colors::reset + L" Rating: " + rankColor +
-          std::to_wstring(profile.rating) + colors::reset + L"(max. " +
-          rankColor + std::to_wstring(profile.maxRating) + colors::reset +
-          L", " + rankColor + profile.maxRank + colors::reset + L")",
-      19 + (int)std::to_string(profile.rating).size() +
-          (int)std::to_string(profile.maxRating).size() +
-          (int)profile.maxRank.size());
+  rows.emplace_back(rankColor + L"" + colors::reset + L" Rating: " +
+                        rankColor + std::to_wstring(profile.rating) +
+                        colors::reset + L"(max. " + rankColor +
+                        std::to_wstring(profile.maxRating) + colors::reset +
+                        (!profile.maxRank.empty() ? L", " : L"") + rankColor +
+                        profile.maxRank + colors::reset + L")",
+                    17 + (!profile.maxRank.empty() ? 2 : 0) +
+                        (int)std::to_string(profile.rating).size() +
+                        (int)std::to_string(profile.maxRating).size() +
+                        (int)profile.maxRank.size());
   maxRowSize = std::max(maxRowSize, rows.back().second);
 
   rows.emplace_back(
