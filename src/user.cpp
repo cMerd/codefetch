@@ -73,3 +73,28 @@ std::wstring user::getColor() const {
   }
   return colors::reset;
 }
+
+std::wstring user::getColor(const std::wstring &rank,
+                            const std::wstring &handle) {
+  if (rank == L"newbie" || rank == L"unrated") {
+    return colors::gray;
+  } else if (rank == L"pupil") {
+    return colors::green;
+  } else if (rank == L"specialist") {
+    return colors::cyan;
+  } else if (rank == L"expert") {
+    return colors::blue;
+  } else if (rank == L"candidate master") {
+    return colors::magenta;
+  } else if (rank == L"master") {
+    return colors::yellow;
+  } else if (rank == L"international master") {
+    return colors::orange;
+  } else if (rank == L"grandmaster") {
+    return colors::red;
+  } else if (rank == L"international grandmaster" ||
+             rank == L"legendary grandmaster" || rank == handle) {
+    return colors::darkRed;
+  }
+  return colors::reset;
+}

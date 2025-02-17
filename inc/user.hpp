@@ -23,4 +23,6 @@ struct user {
 
   user(const json &data);
   std::wstring getColor() const;
+  static std::wstring getColor(const std::wstring &rank,
+                               const std::wstring &handle);
 };
